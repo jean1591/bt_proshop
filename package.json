@@ -21,6 +21,7 @@
 	},
 	"homepage": "https://github.com/jean1591/bt_proshop#readme",
 	"dependencies": {
+		"dotenv": "^8.2.0",
 		"express": "^4.17.1"
 	},
 	"devDependencies": {
