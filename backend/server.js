@@ -6,6 +6,9 @@ import colors from "colors";
 // ROUTES
 import productRoutes from "./routes/productRoutes.js";
 
+// MIDDLEWARE
+import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
+
 dotenv.config();
 
 connectDB();
@@ -17,6 +20,10 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/products", productRoutes);
+
+// MIDDLEWARE
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT | 5000;
 
