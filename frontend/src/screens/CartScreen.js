@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Row, Col, ListGroup, Image, Form, Button, Card } from "react-bootstrap";
 
 // ACTIONS
-import { addToCart } from "../action/cartActions";
+import { addToCart, removeFromCart } from "../action/cartActions";
 
 // COMPONENTS
 import Message from "../components/Message";
@@ -28,7 +28,7 @@ const CartScreen = ({ match, location, history }) => {
 	);
 
 	const removeFromCartHandler = (id) => {
-		console.log("remove");
+		dispatch(removeFromCart(id));
 	};
 
 	const checkoutHandler = () => {
