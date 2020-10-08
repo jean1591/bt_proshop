@@ -5,6 +5,7 @@ import colors from "colors";
 
 // ROUTES
 import productRoutes from "./routes/productRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 // MIDDLEWARE
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
@@ -15,11 +16,15 @@ connectDB();
 
 const app = express();
 
+// Read req.body data
+app.use(express.json());
+
 app.get("/", (req, res) => {
 	res.send("API is running...");
 });
 
 app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
 
 // MIDDLEWARE
 app.use(notFound);
