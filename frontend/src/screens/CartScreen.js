@@ -51,10 +51,13 @@ const CartScreen = ({ match, location, history }) => {
 									<Col md={2}>
 										<Image src={item.image} alt={item.name} fluid rounded />
 									</Col>
+
 									<Col md={3}>
 										<Link to={`/product/${item.product}`}>{item.name}</Link>
 									</Col>
+
 									<Col md={2}>${item.price}</Col>
+
 									<Col md={2}>
 										<Form.Control
 											as="select"
@@ -68,6 +71,7 @@ const CartScreen = ({ match, location, history }) => {
 											))}
 										</Form.Control>
 									</Col>
+
 									<Col md={2}>
 										<Button
 											type="button"
