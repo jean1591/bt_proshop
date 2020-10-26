@@ -8,15 +8,19 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 
 // ACTIONS
-import { listUsers } from "../action/userActions.js";
+import { listUsers, deleteUser } from "../action/userActions.js";
 
 const UserListScreen = ({ history }) => {
 	const dispatch = useDispatch();
 
 	const userList = useSelector((state) => state.userList);
 	const { loading, error, users } = userList;
+
 	const userLogin = useSelector((state) => state.userLogin);
 	const { userInfo } = userLogin;
+
+	const userDelete = useSelector((state) => state.userDelete);
+	const { success: successDelete } = userDelete;
 
 	useEffect(
 		() => {
@@ -26,11 +30,13 @@ const UserListScreen = ({ history }) => {
 				history.push("/login");
 			}
 		},
-		[ dispatch, history ]
+		[ dispatch, history, userInfo, successDelete ]
 	);
 
 	const deleteHandler = (id) => {
-		console.log("Delete");
+		if (window.confirm("Confirm Delete ?")) {
+			dispatch(deleteUser(id));
+		}
 	};
 
 	return (
